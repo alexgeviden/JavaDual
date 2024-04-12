@@ -8,7 +8,6 @@ public class Main {
 
         ArrayList<String> asignaturas = new ArrayList<>();
 
-
         asignaturas.add("Matematicas");
         asignaturas.add("Ciencias");
         asignaturas.add("Historia");
