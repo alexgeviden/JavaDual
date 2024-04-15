@@ -18,14 +18,14 @@ public class Accesofichero {
         System.out.println(archivo.getAbsolutePath());
         System.out.println(archivo.exists());*/
        
-       
-       /* File ruta = new File("C:/Users/alexg/Documents/isos");
+       /* 
+        File ruta = new File("./");
         String[] nombres_archivos = ruta.list();
        
         for (int i = 0; i < nombres_archivos.length; i++) {
             String nombre_archivo = nombres_archivos[i];
             System.out.println(nombre_archivo);}
-            */ 
+            */
         
         
             /*    
@@ -45,7 +45,7 @@ public class Accesofichero {
             System.out.println("Error al copiar el archivo: " + e.getMessage());
         }
         */
-
+/* 
          // Crear un nuevo directorio
         File directory = new File("creado");
         if (!directory.exists()) {
@@ -68,7 +68,7 @@ public class Accesofichero {
             }
         } catch (IOException e) {
             System.out.println("Error al crear el archivo: " + e.getMessage());
-        }
+        }*/
             }
 }
 
