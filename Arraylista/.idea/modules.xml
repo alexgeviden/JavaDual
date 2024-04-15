@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Arraylista.iml" filepath="$PROJECT_DIR$/Arraylista.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Banco/Banco.iml" filepath="$PROJECT_DIR$/Banco/Banco.iml" />
+      <module fileurl="file://$PROJECT_DIR$/arraylists/arraylists.iml" filepath="$PROJECT_DIR$/arraylists/arraylists.iml" />
+    </modules>
+  </component>
+</project>

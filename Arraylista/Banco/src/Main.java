@@ -57,7 +57,7 @@ public class Main {
 //        nombres.add("Ana");
 //        nombres.add("Pedro");
 //
-//        // Imprimimos los nombres en orden alfabético
+//        // Imprimimos los nombres en orden de longitud
 //        System.out.println("Nombres en orden alfabético:");
 //        for (String nombre : nombres) {
 //            System.out.println(nombre);
