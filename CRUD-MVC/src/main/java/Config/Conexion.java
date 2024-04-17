@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Config;
 
 import java.sql.Connection;
@@ -13,14 +9,15 @@ import java.sql.*;
  * @author a925660
  */
 public class Conexion {
-    Connection con;
-    public Conexion() throws ClassNotFoundException, SQLException{
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
-            this.con=DriverManager.getConnection("jdbc:mysql://localhost:3306/proyecto", "root" , "");
-        }catch(ClassNotFoundException e){
-            System.err.println("Error"+e);
+
+    private static Connection conexion;
+
+    // Método estático para obtener la conexión
+    public static Connection obtenerConexion() throws SQLException {
+        if (conexion == null || conexion.isClosed()) {
+            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/proyecto", "root", "");
         }
+        return conexion;
     }
     
 }
