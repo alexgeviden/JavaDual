@@ -7,9 +7,10 @@ public class Conecta_Empresa {
 
 
     public static void mostrar(){
+        Connection miConexion = null;
         try{
             //CREAR CINEXION
-            Connection miConexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/Empresa" , "root" , "111297");
+            miConexion = Abrir_conexion.obtenerConexion();
             // Crear Statement
             Statement miStatement = miConexion.createStatement();
             // EJECUTAR SQL
