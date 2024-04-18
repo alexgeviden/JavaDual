@@ -21,6 +21,6 @@ public interface CRUD {
     public Cliente list(int dni);
     public boolean add(Cliente cli);
     public boolean edit(Cliente cli);
-    public boolean eliminar(int dni);
+    public boolean eliminar(String dni);
     
 }

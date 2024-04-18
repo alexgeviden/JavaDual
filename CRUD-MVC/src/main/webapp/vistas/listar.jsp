@@ -21,15 +21,33 @@
                         <th>DNI</th>
                         <th>Correo</th>
                         <th>Telefono</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
+                <%
+                ClienteDAO dao = new ClienteDAO();
+                List<Cliente>list=dao.listar();
+                Iterator<Cliente>iter=list.iterator();
+                Cliente cli=null;
+                while(iter.hashnext()){
+                    cli=iter.next();
+                    
+                
+                
+                %>
                 <tbody>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><%= cli.getNombre() %></td>
+                        <td><%= cli.getDni() %></td>
+                        <td><%= cli.getCorreo() %></td>
+                        <td><%= cli.getTelefono() %></td>
+                        <td>
+                            <a>Editar</a>
+                            <a>Borrar</a>
+                            
+                        </td>
                     </tr>
+                    <%} %>
                 </tbody>
             </table>
 

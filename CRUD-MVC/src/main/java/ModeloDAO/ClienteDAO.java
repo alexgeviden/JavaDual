@@ -73,7 +73,7 @@ public class ClienteDAO implements CRUD{
     }
 
     @Override
-    public boolean eliminar(int dni) {
+    public boolean eliminar(String dni) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
