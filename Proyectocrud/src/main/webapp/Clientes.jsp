@@ -13,10 +13,25 @@
 </head>
 <body>
     <h1>Lista de Clientes</h1>
-    <ul>
-        <c:forEach var="cliente" items="${clientes}">
-            <li>${cliente.getNombre()} ${cliente.getDNI()} ${cliente.getCorreo()} ${cliente.getTel()}</li>
-        </c:forEach>
-    </ul>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>DNI</th>
+                <th>Correo</th>
+                <th>Teléfono</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach var="cliente" items="${clientes}">
+                <tr>
+                    <td>${cliente.getNombre()}</td>
+                    <td>${cliente.getDNI()}</td>
+                    <td>${cliente.getCorreo()}</td>
+                    <td>${cliente.getTel()}</td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
 </body>
 </html>
