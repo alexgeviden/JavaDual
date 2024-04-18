@@ -6,6 +6,7 @@ package Web;
 
 import Datos.ClienteDao;
 import Dominio.Cliente;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -55,10 +56,11 @@ public class Controlador extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Cliente> clientes = new ClienteDao().listar();
-        System.out.println("Clientes = " + clientes);
-        request.setAttribute("clientes", clientes);
-        request.getRequestDispatcher("Clientes.jsp").forward(request, response);
+             List<Cliente> listaClientes = new ClienteDao().listar(); // Método para obtener la lista de clientes
+            request.setAttribute("clientes", listaClientes);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("Clientes.jsp");
+            dispatcher.forward(request, response);
+
     }
 
     /**
@@ -69,11 +71,90 @@ public class Controlador extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
+   @Override
+protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    // Recibir el parámetro de acción del cliente (editar, eliminar, insertar, etc.)
+    String action = request.getParameter("action");
+
+    if (null != action) // Si la acción es editar, redirigir a una página de edición
+        switch (action) {
+        
+            case "editar":
+                    String dniEditar = request.getParameter("dni"); 
+                    // Obtener el cliente correspondiente al DNI
+                    Cliente clienteEditar = new ClienteDao().buscarPorDNI(dniEditar);
+                    // Añadir el cliente al request como atributo
+                    request.setAttribute("cliente", clienteEditar);
+                    // Redirigir a la página de edición
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/EditarCliente.jsp");
+                    dispatcher.forward(request, response);
+
+
+
+              
+                break;
+                   case "update": {
+                    // Obtener los parámetros del formulario de edición
+                    String nombre = request.getParameter("nombre");
+                    String dni = request.getParameter("dni");
+                    String correo = request.getParameter("correo");
+                    String tel = request.getParameter("tel");
+
+                    // Crear un objeto Cliente con los nuevos datos
+                    Cliente clienteActualizado = new Cliente(nombre, dni, correo, tel);
+
+                    // Llamar al método de actualización en ClienteDao
+                    boolean actualizacionExitosa = new ClienteDao().actualizar(clienteActualizado);
+
+                    if (actualizacionExitosa) {
+                        // Si la actualización fue exitosa, redirigir a la página de clientes
+                        response.sendRedirect(request.getContextPath() + "/index.jsp");
+                    } else {
+                        // Si la actualización falló, redirigir a una página de error o volver a la página de edición
+                        response.sendRedirect(request.getContextPath() + "/editar-cliente.jsp?dni=" + dni);
+                    }
+                    break;
+                }
+
+
+
+            case "eliminar":{
+                 String dni = request.getParameter("dni");
+                Cliente cliente = new Cliente();
+                cliente.setDNI(dni);
+                new ClienteDao().borrar(cliente);
+               dispatcher = request.getRequestDispatcher("/index.jsp");
+                dispatcher.forward(request, response);
+                    // Si no hay returnUrl, redirigir a una página predeterminada
+                 
+                
+                    break;
+                }
+            case "insertar":{
+                String nombre = request.getParameter("nombre");
+                String dni = request.getParameter("dni");
+                String correo = request.getParameter("correo");
+                String tel = request.getParameter("tel");
+                Cliente cliente = new Cliente(nombre, dni, correo, tel);
+                new ClienteDao().insertar(cliente);
+                 // Redirigir al usuario de vuelta a la página anterior
+               dispatcher = request.getRequestDispatcher("/index.jsp");
+                dispatcher.forward(request, response);
+                    // Si no hay returnUrl, redirigir a una página predeterminada
+                  
+                
+                    break;
+                }
+            default:
+                break;
+        }
+
+    // Redirigir de vuelta a la página de clientes después de realizar la acción
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+                dispatcher.forward(request, response);
+}
+
+    
 
     /**
      * Returns a short description of the servlet.

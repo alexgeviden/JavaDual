@@ -1,0 +1,105 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : 18 abr 2024, 22:15:14
+    Author     : a925660
+*/
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px; 
+    margin: 20px auto; 
+    padding: 20px;
+    display: flex; 
+    justify-content: space-between;
+    margin-top: 80px;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse; 
+    margin-right: 70px;
+}
+
+
+th {
+    background-color: #f2f2f2; 
+    padding: 10px; 
+    text-align: left; 
+}
+
+
+td {
+    padding: 8px; 
+}
+
+
+tr:nth-child(odd) {
+    background-color: #f9f9f9; 
+}
+
+
+tr:hover {
+    background-color: #e2e2e2;
+}
+
+button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer;
+}
+
+
+button:hover {
+    background-color: #0056b3; 
+}
+
+.insert-form {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    width: calc(50% - 10px); 
+}
+
+.insert-form h1 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.insert-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.insert-form input[type="text"],
+.insert-form input[type="email"],
+.insert-form input[type="tel"],
+.insert-form button {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: calc(100% - 22px); 
+    box-sizing: border-box;
+}
+
+.insert-form button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.insert-form button:hover {
+    background-color: #0056b3;
+}
